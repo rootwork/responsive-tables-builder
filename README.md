@@ -15,7 +15,24 @@ This tool consumes raw data files, runs them through the responsive tables templ
 * Tables are perfectly readable even if CSS never loads, and progressively enhanced for modern browsers while being fully compatible with old ones.
 * Mobile-first, unlike some responsive solutions out there.
 * Styling is done through Sass files, with variables that you can easily update to change things like breakpoints, colors, and spacing.
+* Within the table, text can be formatted differently than numbers.
 * CSS can optionally be included directly in the resulting HTML file -- so you can drop it in all together, for instance in hosted solutions or CMSes where you don't have control over the site-wide CSS files.
+
+# Directory structure
+
+`config.yaml`, at the root directory, allows you to set generation options, like whether to create a single HTML file or one HTML file for every data file, and whether to generate a separate CSS file or drop the CSS styles into each HTML file. Here you can also change some basic aspects of how your tables are displayed, like colors and spacing, and at what width you want the mobile-to-desktop breakpoint to occur.
+
+`data` is where you put all of the raw data you're going to be formatting, in YAML files. A sample file is included. If you're not familiar with YAML, there are [lots](https://blog.stackpath.com/yaml/) of [guides](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes) and [many implementations](https://yaml.org/). While JSON is probably better for data generally, YAML is easier to format quickly, and there are [JSON-YAML converters](https://www.json2yaml.com/).
+
+`templates` contains the template files that will format your data. Generally you shouldn't need to edit these.
+
+`styles` contains the Sass partials that control the styling of your data tables. Feel free to crack these open if you want to fully customize the CSS styling of your display.
+
+`dist` is where the HTML file(s), and CSS file, will be created, depending on the values set in `config.yaml`.
+
+# Usage
+
+TK
 
 # Resources
 
