@@ -37,7 +37,7 @@ And these important overviews:
 
 # License
 
-GPLv3, see [LICENSE](LICENSE).
+Work copyright Ivan Boothe, 2021. Licensed under GPLv3; see [LICENSE](LICENSE).
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
