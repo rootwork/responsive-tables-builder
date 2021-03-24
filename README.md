@@ -83,20 +83,20 @@ converters](https://www.json2yaml.com/) you can use.
 
 ## Directory structure
 
-`config.yaml`, at the root directory, allows you to set generation options.
+[`config.yaml`](config.yaml), at the root directory, allows you to set
+generation options.
 
-`data` is where you put all of the raw data you're going to be formatting. A
-sample file is included.
+[`data`](data) is where you put all of the raw data you're going to be
+formatting. A sample file is included.
 
-`templates` contains the Handlebars template files that will format your data.
-Generally you shouldn't need to edit these.
+[`templates`](templates) contains the Handlebars template files that will format
+your data. Generally you shouldn't need to edit these.
 
-`styles` contains the Sass partials that control the styling of your data
-tables. Feel free to crack these open if you want to fully customize the CSS
-styling of your display.
+[`styles`](styles) contains the Sass partials that control the styling of your
+data tables. Feel free to crack these open if you want to fully customize the
+CSS styling of your display.
 
-`dist` is where the HTML and CSS files, will be created, depending on the values
-set in `config.yaml`.
+[`dist`](dist) is where the HTML and CSS files will be created.
 
 # Resources
 
