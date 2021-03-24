@@ -58,8 +58,8 @@ process data and do some basic formatting of it.
 1. Fork, or clone locally.
 
 2. Take a look at [`config.yaml`](config.yaml) and the sample data in
-[`data/sample.yaml`](data/sample.yaml). Run `npm start` to see how the HTML for
-this is generated (at `dist/sample.html`).
+[`data/sample.yaml`](data/sample.yaml). Run `npm start` or `yarn start` to see
+how the HTML for this is generated (at `dist/sample.html`).
 
 3. Modify config.yaml to suit your needs. Options include whether to create a
 single HTML file of all your data, or one HTML file for each data file, and
