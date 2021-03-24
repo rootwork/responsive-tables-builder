@@ -68,6 +68,16 @@ styling of your display.
 `dist` is where the HTML file(s), and CSS file, will be created, depending on
 the values set in `config.yaml`.
 
+# Requirements
+
+Runs on Node. Uses Handlebars and Sass, but Node will install these for you and
+you don't necessarily need to know how to use them in order to process data and
+do some basic formatting of it.
+
+# Installation
+
+`npm i`
+
 # Usage
 
 TK
