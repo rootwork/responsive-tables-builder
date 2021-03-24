@@ -82,8 +82,9 @@ do some basic formatting of it.
 
 1. Fork, or clone locally.
 
-2. Take a look at `config.yaml` and the sample data in `data/sample.yaml`. Run
-`npm start` to see how the HTML for this is generated (at `dist/sample.html`).
+2. Take a look at [`config.yaml`](config.yaml) and the sample data in
+[`data/sample.yaml`](data/sample.yaml). Run `npm start` to see how the HTML for
+this is generated (at `dist/sample.html`).
 
 3. Modify config.yaml to suit your needs.
 
@@ -91,8 +92,8 @@ do some basic formatting of it.
 
 5. Run `npm start` to generate HTML and CSS for each corresponding YAML file.
 
-6. For further styling customization, edit the Sass files in the `styles`
-directory.
+6. For further styling customization, edit the Sass files in the
+[`styles`](styles) directory.
 
 # Resources
 
