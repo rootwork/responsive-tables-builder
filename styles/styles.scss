@@ -4,10 +4,7 @@ body {
 
 /* Align number columns to the right. */
 @media (min-width: 48rem) {
-  .table__row th:nth-of-type(2),
-  .table__row th:nth-of-type(3),
-  .table__row td:nth-of-type(2):not(.table__note),
-  .table__row td:nth-of-type(3):not(.table__note) {
+  .table__row .table__cell--number {
     text-align: right;
   }
 }
@@ -26,12 +23,21 @@ body {
 }
 
 caption {
+  padding-bottom: 0.5rem;
   font-size: 2rem;
   font-weight: bold;
   text-align: left;
 }
 
+.table__summary {
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 .table__row .table__note {
+  background-color: white;
+  color: black;
   font-size: 0.9rem;
   font-style: italic;
 }

@@ -23,7 +23,8 @@ summary:
 
 # NOTE - optional
 # This is a nonstandard table element, but used to display information at the
-# top of the table, below the title but above the columns.
+# top of the inside of the table (unlike the caption, which is above the table)
+# but before the column headings.
 note: I have three pending publications.
 
 # FOOTER - optional
