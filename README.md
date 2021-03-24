@@ -41,44 +41,19 @@ to change things like breakpoints, colors, and spacing.
 can drop it in all together, for instance in hosted solutions or CMSes where you
 don't have control over the site-wide CSS files.
 
-# Directory structure
-
-`config.yaml`, at the root directory, allows you to set generation options, like
-whether to create a single HTML file or one HTML file for every data file, and
-whether to generate a separate CSS file or drop the CSS styles into each HTML
-file. Here you can also change some basic aspects of how your tables are
-displayed, like colors and spacing, and at what width you want the
-mobile-to-desktop breakpoint to occur.
-
-`data` is where you put all of the raw data you're going to be formatting, in
-YAML files. A sample file is included. If you're not familiar with YAML, there
-are [lots](https://blog.stackpath.com/yaml/) of
-[guides](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes)
-and [many implementations](https://yaml.org/). While JSON is probably better for
-data generally, YAML is easier to format quickly, and there are [JSON-YAML
-converters](https://www.json2yaml.com/).
-
-`templates` contains the Handlebarstemplate files that will format your data.
-Generally you shouldn't need to edit these.
-
-`styles` contains the Sass partials that control the styling of your data
-tables. Feel free to crack these open if you want to fully customize the CSS
-styling of your display.
-
-`dist` is where the HTML file(s), and CSS file, will be created, depending on
-the values set in `config.yaml`.
-
 # Requirements
 
 Runs on Node. Uses Handlebars and Sass, but Node will install these for you and
 you don't necessarily need to know how to use them in order to process data and
 do some basic formatting of it.
 
-# Installation
+# Details
+
+## Installation
 
 `npm i`
 
-# Usage
+## Usage
 
 1. Fork, or clone locally.
 
@@ -86,14 +61,42 @@ do some basic formatting of it.
 [`data/sample.yaml`](data/sample.yaml). Run `npm start` to see how the HTML for
 this is generated (at `dist/sample.html`).
 
-3. Modify config.yaml to suit your needs.
+3. Modify config.yaml to suit your needs. Options include whether to create a
+single HTML file of all your data, or one HTML file for each data file, and
+whether to generate a separate CSS file or drop the CSS styles into each HTML
+file. Here you can also change some basic aspects of how your tables are
+displayed, like colors and spacing, and at what width you want the
+mobile-to-desktop breakpoint to occur.
 
-4. Place YAML data files in `data`, formatted as in the sample data file.
+4. Place YAML data files in `data`, formatted as in the sample data file. If
+you're not familiar with YAML, there are
+[lots](https://blog.stackpath.com/yaml/) of
+[guides](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes)
+and [many implementations](https://yaml.org/). While JSON is probably better for
+data generally, YAML is easier to format and read, and there are [JSON-YAML
+converters](https://www.json2yaml.com/) you can use.
 
-5. Run `npm start` to generate HTML and CSS for each corresponding YAML file.
+5. Run `npm start` to generate the HTML and CSS.
 
 6. For further styling customization, edit the Sass files in the
 [`styles`](styles) directory.
+
+## Directory structure
+
+`config.yaml`, at the root directory, allows you to set generation options.
+
+`data` is where you put all of the raw data you're going to be formatting. A
+sample file is included.
+
+`templates` contains the Handlebars template files that will format your data.
+Generally you shouldn't need to edit these.
+
+`styles` contains the Sass partials that control the styling of your data
+tables. Feel free to crack these open if you want to fully customize the CSS
+styling of your display.
+
+`dist` is where the HTML and CSS files, will be created, depending on the values
+set in `config.yaml`.
 
 # Resources
 
