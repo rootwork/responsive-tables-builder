@@ -1,5 +1,5 @@
 **Note: This is a WIP. The readme below is aspirational, guiding me in what I
-**want to do -- but it doesn't work yet!**
+want to do -- but it doesn't work yet!**
 
 Responsive data tables -- tables of information that are still readable even at
 small screen widths -- can be tricky. There are [a lot of solutions out
