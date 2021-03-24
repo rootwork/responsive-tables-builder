@@ -23,7 +23,7 @@ summary:
 
 # NOTE - optional
 # This is a nonstandard table element, but used to display information at the
-# top of the table, below the title but above the headings.
+# top of the table, below the title but above the columns.
 note: I have three pending publications.
 
 # FOOTER - optional
@@ -31,23 +31,35 @@ note: I have three pending publications.
 # or other non-critical notes to the table as a whole.
 footer: Current as of Jan. 1, 2021.
 
-# HEADINGS - required
-# List all of the column headings in order.
-# TODO: Allow defining particular columns as text or numbers.
-# TODO: Allow defining particular columns as row headings as well.
-headings:
-  - Title
-  - Authors
-  - Coauthorship
-  - Date
-  - Type
-  - Format
-  - Size
-  - Status
-  - URL
+# COLUMNS - required
+# name: String. The text for your column heading.
+# type: "text" or "number". Styles the column based on the data being presented.
+# row: (optional) "true" or "false". Sets this column as the "row header" which
+#      alters the style and presents the column first in assistive devices. Need
+#      not be the first column.
+columns:
+  - name: Title
+    type: text
+  - name: Authors
+    type: text
+  - name: Coauthorship
+    type: text
+  - name: Date
+    type: text
+    row: true
+  - name: Type
+    type: text
+  - name: Format
+    type: text
+  - name: Size
+    type: text
+  - name: Avg. Rating
+    type: number
+  - name: URL
+    type: text
 
 # ROWS - required
-# Each row of data follows the headings defined above, in order.
+# Each row of data follows the columns defined above, in order.
 # Note YAML format requiring each new row to begin with `- -`.
 # Individual items in a row (cells in the table) may be left blank.
 rows:
@@ -58,7 +70,7 @@ rows:
     - Journal
     - Printed
     - 5 p.
-    - Published
+    - 4.8
     - https://example.com
   - - An unlikely sequel
     - Frodo Smith
@@ -67,7 +79,7 @@ rows:
     - Zine
     - Printed
     - 55 p.
-    - Published
+    - 4.2
     - https://example.com/sequel
   - - An unbelievable director's cut
     - Zach Snyder
@@ -76,5 +88,5 @@ rows:
     - Film
     - 35mm
     - 7 hours
-    - Released
+    - 4.6
     - https://example.com/directorscut

@@ -3,6 +3,9 @@
 const fs         = require('fs');
 const yaml       = require('js-yaml');
 const Handlebars = require("handlebars");
+// const helpers    = require('handlebars-helpers')({
+//   handlebars: Handlebars
+// });
 const path       = require('path');
 
 //
@@ -36,7 +39,7 @@ const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 //
 
 Handlebars.registerHelper('columnCount', function() {
-  var columnCount = Object.keys(dataJSON[0]['headings']).length;
+  var columnCount = Object.keys(dataJSON[0]['columns']).length;
   return new Handlebars.SafeString(columnCount);
 });
 
