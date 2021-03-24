@@ -11,9 +11,9 @@ This tool consumes raw data files, runs them through the responsive tables templ
 # Features
 
 * Prepare the data you want to display in structured data files, without having to worry about the necessary HTML code.
-* Semantic and accessibility-focused HTML output, without any need for JavaScript.
+* Generate semantic and accessibility-focused HTML output, without any need for JavaScript.
 * Tables are perfectly readable even if CSS never loads, and progressively enhanced for modern browsers while being fully compatible with old ones.
-* Mobile-first, unlike some responsive solutions out there.
+* Mobile-first tables, unlike some responsive solutions out there.
 * Styling is done through Sass files, with variables that you can easily update to change things like breakpoints, colors, and spacing.
 * Within the table, text can be formatted differently than numbers.
 * CSS can optionally be included directly in the resulting HTML file -- so you can drop it in all together, for instance in hosted solutions or CMSes where you don't have control over the site-wide CSS files.
@@ -24,7 +24,7 @@ This tool consumes raw data files, runs them through the responsive tables templ
 
 `data` is where you put all of the raw data you're going to be formatting, in YAML files. A sample file is included. If you're not familiar with YAML, there are [lots](https://blog.stackpath.com/yaml/) of [guides](https://www.codeproject.com/Articles/1214409/Learn-YAML-in-five-minutes) and [many implementations](https://yaml.org/). While JSON is probably better for data generally, YAML is easier to format quickly, and there are [JSON-YAML converters](https://www.json2yaml.com/).
 
-`templates` contains the template files that will format your data. Generally you shouldn't need to edit these.
+`templates` contains the Handlebars template files that will format your data. Generally you shouldn't need to edit these.
 
 `styles` contains the Sass partials that control the styling of your data tables. Feel free to crack these open if you want to fully customize the CSS styling of your display.
 
