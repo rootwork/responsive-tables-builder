@@ -43,15 +43,15 @@ don't have control over the site-wide CSS files.
 
 # Requirements
 
-Runs on Node. Uses Handlebars and Sass, but Node will install these for you and
-you don't necessarily need to know how to use them in order to process data and
-do some basic formatting of it.
+Runs on Node; optionally Yarn. Uses Handlebars and Sass, but these will install
+for you and you don't necessarily need to know how to use them in order to
+process data and do some basic formatting of it.
 
 # Details
 
 ## Installation
 
-`npm i`
+`npm install` or `yarn install`
 
 ## Usage
 
@@ -76,7 +76,7 @@ and [many implementations](https://yaml.org/). While JSON is probably better for
 data generally, YAML is easier to format and read, and there are [JSON-YAML
 converters](https://www.json2yaml.com/) you can use.
 
-5. Run `npm start` to generate the HTML and CSS.
+5. Run `npm start` or `yarn start` to generate the HTML and CSS.
 
 6. For further styling customization, edit the Sass files in the
 [`styles`](styles) directory.
