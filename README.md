@@ -4,9 +4,9 @@ Responsive data tables -- tables of information that are still readable even at 
 
 {image TK}
 
-One drawback to this solution, though, is that it relies on column headers being inserted into the HTML as data attributes, which is a pain if you have a lot of rows of information to present.
+One drawback to this solution, though, is that it relies on column headers being inserted into the HTML as data attributes, which is a pain if you have a lot of rows of information to present. You also have to manually change things like `colspan` based on the number of columns, and `scope` and CSS formatting (like `text-align`) based on the type of data in each cell.
 
-This tool consumes raw data files, runs them through the responsive tables template, and gives you HTML and CSS you can drop in place.
+This tool consumes raw data files, runs them through the responsive tables template, and gives you HTML and CSS you can drop in place. It automatically adjusts the code to fit your columns and data formatting requirements.
 
 # Features
 

@@ -1,0 +1,35 @@
+{
+  "name": "responsive-tables-builder",
+  "version": "1.0.0",
+  "description": " Create mobile-first, accessible, responsive data tables from data files. HTML and CSS only; no JS in the output.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rootwork/responsive-tables-builder.git"
+  },
+  "homepage": "https://github.com/rootwork/responsive-tables-builder#readme",
+  "keywords": [
+    "tables",
+    "data-tables",
+    "responsive-tables",
+    "mobile-first",
+    "accessibility"
+  ],
+  "author": "Ivan Boothe <ivan@rootwork.org> (https://rootwork.org/)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rootwork/responsive-tables-builder/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/rootwork"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "js-yaml": "^4.0.0"
+  }
+}

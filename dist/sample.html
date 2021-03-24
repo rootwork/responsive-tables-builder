@@ -1,0 +1,291 @@
+<style>
+  body {
+    font-family: Helvetica;
+  }
+  
+  /* Align number columns to the right. */
+  @media (min-width: 48rem) {
+    .table__row th:nth-of-type(2),
+    .table__row th:nth-of-type(3),
+    .table__row td:nth-of-type(2):not(.table__note),
+    .table__row td:nth-of-type(3):not(.table__note) {
+      text-align: right;
+    }
+  }
+  
+  .table {
+    width: 100%;
+    margin: 2rem 0;
+    background-color: #eee;
+    position: relative; /* required for table header stickiness */
+  }
+  
+  @media (min-width: 48rem) {
+    .table {
+      max-width: 900px;
+    }
+  }
+  
+  caption {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .table__row .table__note {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  
+  .table__head {
+    display: none;
+    visibility: hidden;
+    position: sticky;
+    top: 0; /* required for the stickiness */
+    vertical-align: bottom;
+  }
+  
+  @media (min-width: 48rem) {
+    .table__head {
+      width: 100%;
+      display: table-header-group;
+      visibility: visible;
+    }
+  }
+  
+  .table__head .table__row {
+    background-color: black;
+    color: white;
+  }
+  
+  .table__body,
+  .table__row,
+  .table__cell {
+    display: block;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+  }
+  
+  @media (min-width: 48rem) {
+    .table__head .table__body,
+    .table__head .table__row,
+    .table__head .table__cell {
+      padding: 0.2rem 0.8rem 0;
+      line-height: 2;
+      font-size: 1.1rem;
+    }
+  }
+  
+  .table__row {
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 48rem) {
+    .table__row {
+      display: table-row;
+      width: 100%;
+    }
+  
+    .table__row .table__cell {
+      display: table-cell;
+    }
+  }
+  
+  @media (min-width: 48rem) {
+    .table__body .table__row:hover .table__cell:not(.table__note),
+    .table__body .table__row:active .table__cell:not(.table__note),
+    .table__body .table__row:focus .table__cell:not(.table__note) {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .table__cell {
+    padding: 0.25rem;
+    vertical-align: text-top;
+  }
+  
+  .table__body .table__cell {
+    text-align: left;
+    padding: 0.75rem;
+    background-color: white;
+  }
+  
+  .table__body {
+    display: table-row-group;
+  }
+  
+  .table__cell[data-title]:before {
+    display: inline-block;
+    min-width: 140px;
+    content: attr(data-title) ":";
+    font-weight: bold;
+  }
+  
+  @media (min-width: 48rem) {
+    .table__cell[data-title]:before {
+      display: none;
+      content: "";
+    }
+  }
+  
+  .table__cell:empty {
+    display: none;
+  }
+  
+  @media (min-width: 48rem) {
+    .table__cell:empty {
+      display: table-cell;
+    }
+  }
+  
+  @media (min-width: 48rem) {
+    .table__cell--head[data-title]:before {
+      display: none;
+      content: "";
+    }
+  }
+  
+  .table__row .table__cell--head2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+  
+  .table__row .table__cell--head3 {
+    background-color: #eee;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+</style>
+
+<table class="table" summary="I have been published in twelve different continents.">
+
+  <caption class="table__caption">
+    My awesome publications
+  </caption>
+
+  <thead class="table__head">
+
+    <tr class="table__row">
+      <td class="table__cell table__note" colspan="9" scope="colgroup">
+        I have three pending publications.
+      </td>
+    </tr>
+
+    <tr class="table__row">
+        <th class="table__cell table__cell--colhead" scope="col">Title</th>
+        <th class="table__cell table__cell--colhead" scope="col">Authors</th>
+        <th class="table__cell table__cell--colhead" scope="col">Coauthorship</th>
+        <th class="table__cell table__cell--colhead" scope="col">Date</th>
+        <th class="table__cell table__cell--colhead" scope="col">Type</th>
+        <th class="table__cell table__cell--colhead" scope="col">Format</th>
+        <th class="table__cell table__cell--colhead" scope="col">Size</th>
+        <th class="table__cell table__cell--colhead" scope="col">Status</th>
+        <th class="table__cell table__cell--colhead" scope="col">URL</th>
+    </tr>
+
+  </thead>
+
+  <tbody class="table__body">
+
+      <tr class="table__row">
+          <td class="table__cell" data-title="Title">
+            An improbable journey
+          </td>
+          <td class="table__cell" data-title="Authors">
+            Bilbo Smith
+          </td>
+          <td class="table__cell" data-title="Coauthorship">
+            
+          </td>
+          <td class="table__cell" data-title="Date">
+            2000
+          </td>
+          <td class="table__cell" data-title="Type">
+            Journal
+          </td>
+          <td class="table__cell" data-title="Format">
+            Printed
+          </td>
+          <td class="table__cell" data-title="Size">
+            5 p.
+          </td>
+          <td class="table__cell" data-title="Status">
+            Published
+          </td>
+          <td class="table__cell" data-title="URL">
+            https://example.com
+          </td>
+      </tr>
+      <tr class="table__row">
+          <td class="table__cell" data-title="Title">
+            An unlikely sequel
+          </td>
+          <td class="table__cell" data-title="Authors">
+            Frodo Smith
+          </td>
+          <td class="table__cell" data-title="Coauthorship">
+            Bilbo Smith, Gandalf the Grey
+          </td>
+          <td class="table__cell" data-title="Date">
+            2010
+          </td>
+          <td class="table__cell" data-title="Type">
+            Zine
+          </td>
+          <td class="table__cell" data-title="Format">
+            Printed
+          </td>
+          <td class="table__cell" data-title="Size">
+            55 p.
+          </td>
+          <td class="table__cell" data-title="Status">
+            Published
+          </td>
+          <td class="table__cell" data-title="URL">
+            https://example.com/sequel
+          </td>
+      </tr>
+      <tr class="table__row">
+          <td class="table__cell" data-title="Title">
+            An unbelievable director&#x27;s cut
+          </td>
+          <td class="table__cell" data-title="Authors">
+            Zach Snyder
+          </td>
+          <td class="table__cell" data-title="Coauthorship">
+            
+          </td>
+          <td class="table__cell" data-title="Date">
+            2020
+          </td>
+          <td class="table__cell" data-title="Type">
+            Film
+          </td>
+          <td class="table__cell" data-title="Format">
+            35mm
+          </td>
+          <td class="table__cell" data-title="Size">
+            7 hours
+          </td>
+          <td class="table__cell" data-title="Status">
+            Released
+          </td>
+          <td class="table__cell" data-title="URL">
+            https://example.com/directorscut
+          </td>
+      </tr>
+
+  </tbody>
+
+    <tfoot class="table__foot">
+      <tr class="table__row">
+        <td class="table__cell table__footer" colspan="9" scope="colgroup">
+          Current as of Jan. 1, 2021.
+        </td>
+      </tr>
+    </tfoot>
+
+</table>

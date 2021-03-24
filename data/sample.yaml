@@ -1,0 +1,80 @@
+# VISIBILITY
+# Throughout this file, you'll see options for "visible". Setting these to false
+# will hide the item from sighted users, while leaving the item in the HTML
+# structure to make it available to screen readers. Commenting out a section
+# will remove it from the HTML completely.
+
+# TITLE - required
+# Used as the <caption> element. Even if you choose to hide this in your
+# display, it's important for it to exist in the HTML for assistive devices.
+title:
+  text: My awesome publications
+  visible: true
+
+# SUMMARY - optional
+# This is a summary of the data for assistive devices, as an alternative to
+# reading through all of the data. This is NOT a subtitle or introductory note
+# -- for any of those things, use "note", below. This is used as the `summary`
+# attribute of the HTML table. While this attribute is depreciated in HTML5,
+# many screen readers continue to use it.
+summary:
+  text: I have been published in twelve different continents.
+  visible: false
+
+# NOTE - optional
+# This is a nonstandard table element, but used to display information at the
+# top of the table, below the title but above the headings.
+note: I have three pending publications.
+
+# FOOTER - optional
+# Used in the <tfoot> element at the bottom of the table. Useful for footnotes
+# or other non-critical notes to the table as a whole.
+footer: Current as of Jan. 1, 2021.
+
+# HEADINGS - required
+# List all of the column headings in order.
+# TODO: Allow defining particular columns as text or numbers.
+# TODO: Allow defining particular columns as row headings as well.
+headings:
+  - Title
+  - Authors
+  - Coauthorship
+  - Date
+  - Type
+  - Format
+  - Size
+  - Status
+  - URL
+
+# ROWS - required
+# Each row of data follows the headings defined above, in order.
+# Note YAML format requiring each new row to begin with `- -`.
+# Individual items in a row (cells in the table) may be left blank.
+rows:
+  - - An improbable journey
+    - Bilbo Smith
+    -
+    - 2000
+    - Journal
+    - Printed
+    - 5 p.
+    - Published
+    - https://example.com
+  - - An unlikely sequel
+    - Frodo Smith
+    - Bilbo Smith, Gandalf the Grey
+    - 2010
+    - Zine
+    - Printed
+    - 55 p.
+    - Published
+    - https://example.com/sequel
+  - - An unbelievable director's cut
+    - Zach Snyder
+    -
+    - 2020
+    - Film
+    - 35mm
+    - 7 hours
+    - Released
+    - https://example.com/directorscut
