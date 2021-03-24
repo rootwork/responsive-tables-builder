@@ -17,7 +17,9 @@
     "data-tables",
     "responsive-tables",
     "mobile-first",
-    "accessibility"
+    "accessibility",
+    "handlebars",
+    "sass"
   ],
   "author": "Ivan Boothe <ivan@rootwork.org> (https://rootwork.org/)",
   "license": "GPL-3.0-or-later",
