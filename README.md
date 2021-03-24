@@ -2,10 +2,10 @@
 want to do -- but it doesn't work yet!**
 
 Responsive data tables -- tables of information that are still readable even at
-small screen widths -- can be tricky. There are [a lot of solutions out
-there](#resources). This one picks an option that is mobile-first, does not
-require JS, allows for multiple "levels" of data, and is presented in a readable
-list form at small screen widths. Like so:
+small screen widths -- can be tricky. There are
+[a lot of solutions out there](#techniques). This one picks an option that is
+mobile-first, does not require JS, allows for multiple "levels" of data, and is
+presented in a readable list form at small screen widths. Like so:
 
 {image TK}
 
@@ -98,9 +98,36 @@ CSS styling of your display.
 
 [`dist`](dist) is where the HTML and CSS files will be created.
 
+# Known issues
+
+**I have data in key:value pairs like this and want to turn it into a table:**
+
+```
+Name: Alice
+City: Adelaide
+Name: Bob
+City: Baltimore
+```
+
+I hear you. Unfortunately, I had to choose between this format and lists of
+lists (grouping together headers). The latter proved to be more flexible when it
+came to defining properties of headings, rows and cells -- for instance
+identifying subheadings, setting things like `colspan`, and formatting different
+data types like numbers.
+
+The key:value format also requires repeating heading (column) names, which can
+be problematic for those entering data by hand.
+
+There are
+[several](https://stackoverflow.com/questions/55974692/how-to-convert-key-value-list-into-array-of-objects)
+[ways](https://stackoverflow.com/questions/63937416/how-to-convert-key-value-list-into-array)
+to
+[convert](https://www.samanthaming.com/tidbits/90-object-from-entries/) these
+types of lists.
+
 # Resources
 
-Informed by the following techniques:
+## Techniques
 
 * [Responsive tables, mobile first and no JS](https://codepen.io/shellbryson/post/responsive-tables),
 Shell Bryson (the technique used in this system)
@@ -118,7 +145,7 @@ Adrian Roselli
 * [Under-Engineered Responsive Tables](https://adrianroselli.com/2020/11/under-engineered-responsive-tables.html),
 Adrian Roselli
 
-And these important overviews:
+## Guides
 
 * [Web Typography: Designing Tables to be Read, Not Looked At](https://alistapart.com/article/web-typography-tables/),
 A List Apart (Richard Rutter)
