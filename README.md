@@ -80,7 +80,19 @@ do some basic formatting of it.
 
 # Usage
 
-TK
+1. Fork, or clone locally.
+
+2. Take a look at `config.yaml` and the sample data in `data/sample.yaml`. Run
+`npm start` to see how the HTML for this is generated (at `dist/sample.html`).
+
+3. Modify config.yaml to suit your needs.
+
+4. Place YAML data files in `data`, formatted as in the sample data file.
+
+5. Run `npm start` to generate HTML and CSS for each corresponding YAML file.
+
+6. For further styling customization, edit the Sass files in the `styles`
+directory.
 
 # Resources
 
