@@ -9,6 +9,35 @@ const Handlebars = require("handlebars");
 const path       = require('path');
 
 //
+// DEVELOPMENT LOGGING
+//
+
+/**
+* Register a debug helper for Handlebars to be able to log data or inspect data in the browser console
+*
+* Usage:
+*   {{debug someObj.data}} => logs someObj.data to the console
+*   {{debug someObj.data true}} => logs someObj.data to the console and stops at a debugger point
+*
+* Source: https://gist.github.com/elgervb/5c38c8d70870f92ef6338a291edf88e9
+*
+* @param {any} the data to log to console
+* @param {boolean} whether or not to set a breakpoint to inspect current state in debugger
+*/
+Handlebars.registerHelper( 'debug', function( data, breakpoint ) {
+    console.log(data);
+    if (breakpoint === true) {
+        debugger;
+    }
+    return '';
+});
+// use with {{log 0 this "myString" accountName}}
+// DEBUG: 0, INFO: 1, WARN: 2, ERROR: 3,
+Handlebars.registerHelper('log', Handlebars.logger.log);
+// Std level is 3, when set to 0, handlebars will log all compilation results
+Handlebars.logger.level = 3;
+
+//
 // Paths
 //
 
@@ -32,7 +61,7 @@ Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.sc
 
 const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 // Uncomment to write intermediate JSON file to disk.
-// fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
+fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
 // Handlebar helpers
