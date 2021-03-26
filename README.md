@@ -1,5 +1,5 @@
 **Note: This is a WIP. The readme below is aspirational, guiding me in what I
-want to do -- but it doesn't work yet!**
+want to do -- but things are only partially working at this point.**
 
 Responsive data tables -- tables of information that are still readable even at
 small screen widths -- can be tricky. There are
@@ -35,7 +35,8 @@ enhanced for modern browsers while being fully compatible with old ones.
 * Styling is done through Sass files, with variables that you can easily update
 to change things like breakpoints, colors, and spacing.
 
-* Within the table, text can be formatted differently than numbers.
+* Within the table, different data can be formatted in different ways. For
+instance, you can right-align numerical data columns.
 
 * CSS can optionally be included directly in the resulting HTML file -- so you
 can drop it in all together, for instance in hosted solutions or CMSes where you
@@ -43,23 +44,23 @@ don't have control over the site-wide CSS files.
 
 # Requirements
 
-Runs on Node; optionally Yarn. Uses Handlebars and Sass, but these will install
-for you and you don't necessarily need to know how to use them in order to
-process data and do some basic formatting of it.
+Runs on Node. Uses Handlebars and Sass, but these will install for you and you
+don't necessarily need to know how to use them in order to process data and do
+some basic formatting of it.
 
 # Details
 
 ## Installation
 
-`npm install` or `yarn install`
+`npm install`
 
 ## Usage
 
 1. Fork, or clone locally.
 
 2. Take a look at [`config.yaml`](config.yaml) and the sample data in
-[`data/sample.yaml`](data/sample.yaml). Run `npm start` or `yarn start` to see
-how the HTML for this is generated (at `dist/sample.html`).
+[`data/sample.yaml`](data/sample.yaml). Run `npm start` to see how the HTML for
+this is generated (at `dist/sample.html`).
 
 3. Modify config.yaml to suit your needs. Options include whether to create a
 single HTML file of all your data, or one HTML file for each data file, and
@@ -76,7 +77,7 @@ and [many implementations](https://yaml.org/). While JSON is probably better for
 data generally, YAML is easier to format and read, and there are [JSON-YAML
 converters](https://www.json2yaml.com/) you can use.
 
-5. Run `npm start` or `yarn start` to generate the HTML and CSS.
+5. Run `npm start` to generate the HTML and CSS.
 
 6. For further styling customization, edit the Sass files in the
 [`styles`](styles) directory.
