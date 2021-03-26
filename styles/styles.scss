@@ -3,7 +3,7 @@ body {
 }
 
 /* Align number columns to the right. */
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__row .table__cell--number {
     text-align: right;
   }
@@ -16,7 +16,7 @@ body {
   position: relative; /* required for table header stickiness */
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table {
     max-width: 900px;
   }
@@ -50,7 +50,7 @@ caption {
   vertical-align: bottom;
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__head {
     width: 100%;
     display: table-header-group;
@@ -73,7 +73,7 @@ caption {
   white-space: normal;
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__head .table__body,
   .table__head .table__row,
   .table__head .table__cell {
@@ -87,7 +87,7 @@ caption {
   margin-bottom: 1rem;
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__row {
     display: table-row;
     width: 100%;
@@ -98,7 +98,7 @@ caption {
   }
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__body .table__row:hover .table__cell:not(.table__note),
   .table__body .table__row:active .table__cell:not(.table__note),
   .table__body .table__row:focus .table__cell:not(.table__note) {
@@ -128,7 +128,7 @@ caption {
   font-weight: bold;
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__cell[data-title]:before {
     display: none;
     content: "";
@@ -139,14 +139,14 @@ caption {
   display: none;
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__cell:empty,
   .table__cell--empty {
     display: table-cell;
   }
 }
 
-@media (min-width: 48rem) {
+@media print, screen and (min-width: 48rem) {
   .table__cell--head[data-title]:before {
     display: none;
     content: "";
