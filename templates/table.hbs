@@ -1,6 +1,15 @@
-<table class="table"{{#if [0].summary.text}} summary="{{[0].summary.text}}"{{/if}}>
+<table class="table"
+  {{#if [0].summary.text}}
+    summary="{{[0].summary.text}}"
+  {{/if}}
+>
 
-  <caption class="table__caption{{#unless [0].title.visible}} visually-hidden{{/unless}}">
+  <caption class="
+    table__caption
+    {{#unless [0].title.visible}}
+      visually-hidden
+    {{/unless}}
+  ">
     {{[0].title.text}}
     {{#if [0].summary.visible}}
       <span class="table__summary">
@@ -12,20 +21,38 @@
   <thead class="table__head">
 
     {{#if [0].note}}
-    <tr class="table__row">
-      <td class="table__cell table__note" colspan="{{ columnCount }}" scope="colgroup">
-        {{[0].note}}
-      </td>
-    </tr>
+      <tr class="table__row">
+        <td class="
+          table__cell
+          table__note
+          "
+          colspan="{{ columnCount }}"
+          scope="colgroup"
+        >
+          {{[0].note}}
+        </td>
+      </tr>
     {{/if}}
 
     <tr class="table__row">
       {{#each [0].columns}}
-        <th class="table__cell table__cell--{{this.type}}{{#if this.row}} table__cell--rowhead{{/if}}" scope="col">
+        <th class="
+          table__cell
+          table__cell--{{this.type}}
+          {{#if this.row}}
+            table__cell--rowhead
+          {{/if}}
+          "
+          scope="col"
+        >
           {{this.name}}
         </th>
       {{else}}
-        <th class="table__cell scope="col">No columns defined.</th>
+        <th class="table__cell"
+        scope="col"
+        >
+          No columns defined.
+        </th>
       {{/each}}
     </tr>
 
@@ -34,7 +61,9 @@
   <tbody class="table__body">
 
     {{#each [0].rows}}
-      <tr class="table__row">
+      <tr class="
+        table__row
+      ">
         {{#each .}}
           <td class="
             table__cell
@@ -55,7 +84,13 @@
   {{#if [0].footer}}
     <tfoot class="table__foot">
       <tr class="table__row">
-        <td class="table__cell table__footer" colspan="{{ columnCount }}" scope="colgroup">
+        <td class="
+          table__cell
+          table__footer
+        "
+        colspan="{{ columnCount }}"
+        scope="colgroup"
+        >
           {{[0].footer}}
         </td>
       </tr>
