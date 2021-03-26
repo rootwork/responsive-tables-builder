@@ -61,7 +61,7 @@ Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.sc
 
 const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 // Uncomment to write intermediate JSON file to disk.
-fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
+// fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
 // Handlebar helpers
