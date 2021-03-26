@@ -140,7 +140,8 @@ caption {
 }
 
 @media (min-width: 48rem) {
-  .table__cell:empty {
+  .table__cell:empty,
+  .table__cell--empty {
     display: table-cell;
   }
 }
