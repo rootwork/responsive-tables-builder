@@ -1,0 +1,22 @@
+<tbody class="table__body">
+
+  {{#each [0].rows}}
+    <tr class="
+      table__row
+    ">
+      {{#each .}}
+        <td class="
+          table__cell
+          table__cell--{{#with (lookup ../../[0].columns @index)~}}{{type}}{{/with}}
+          {{#unless .}} table__cell--empty{{/unless}}
+        "
+        data-title="
+          {{#with (lookup ../../[0].columns @index)~}}{{name}}{{/with}}
+        ">
+          {{.}}
+        </td>
+      {{/each}}
+    </tr>
+  {{/each}}
+
+</tbody>

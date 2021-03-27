@@ -1,0 +1,39 @@
+<thead class="table__head">
+
+  {{#if [0].note}}
+    <tr class="table__row">
+      <td class="
+        table__cell
+        table__note
+        "
+        colspan="{{ columnCount }}"
+        scope="colgroup"
+      >
+        {{[0].note}}
+      </td>
+    </tr>
+  {{/if}}
+
+  <tr class="table__row">
+    {{#each [0].columns}}
+      <th class="
+        table__cell
+        table__cell--{{this.type}}
+        {{#if this.row}}
+          table__cell--rowhead
+        {{/if}}
+        "
+        scope="col"
+      >
+        {{this.name}}
+      </th>
+    {{else}}
+      <th class="table__cell"
+      scope="col"
+      >
+        No columns defined.
+      </th>
+    {{/each}}
+  </tr>
+
+</thead>

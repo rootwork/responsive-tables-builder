@@ -1,0 +1,13 @@
+<caption class="
+  table__caption
+  {{#unless [0].title.visible}}
+    visually-hidden
+  {{/unless}}
+">
+  {{[0].title.text}}
+  {{#if [0].summary.visible}}
+    <span class="table__summary">
+      {{[0].summary.text}}
+    </span>
+  {{/if}}
+</caption>

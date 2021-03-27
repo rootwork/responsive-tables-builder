@@ -4,98 +4,15 @@
   {{/if}}
 >
 
-  <caption class="
-    table__caption
-    {{#unless [0].title.visible}}
-      visually-hidden
-    {{/unless}}
-  ">
-    {{[0].title.text}}
-    {{#if [0].summary.visible}}
-      <span class="table__summary">
-        {{[0].summary.text}}
-      </span>
-    {{/if}}
-  </caption>
+  {{> caption}}
 
-  <thead class="table__head">
+  {{> head}}
 
-    {{#if [0].note}}
-      <tr class="table__row">
-        <td class="
-          table__cell
-          table__note
-          "
-          colspan="{{ columnCount }}"
-          scope="colgroup"
-        >
-          {{[0].note}}
-        </td>
-      </tr>
-    {{/if}}
+  {{> body}}
 
-    <tr class="table__row">
-      {{#each [0].columns}}
-        <th class="
-          table__cell
-          table__cell--{{this.type}}
-          {{#if this.row}}
-            table__cell--rowhead
-          {{/if}}
-          "
-          scope="col"
-        >
-          {{this.name}}
-        </th>
-      {{else}}
-        <th class="table__cell"
-        scope="col"
-        >
-          No columns defined.
-        </th>
-      {{/each}}
-    </tr>
-
-  </thead>
-
-  <tbody class="table__body">
-
-    {{#each [0].rows}}
-      <tr class="
-        table__row
-      ">
-        {{#each .}}
-          <td class="
-            table__cell
-            table__cell--{{#with (lookup ../../[0].columns @index)~}}{{type}}{{/with}}
-            {{#unless .}} table__cell--empty{{/unless}}
-          "
-          data-title="
-            {{#with (lookup ../../[0].columns @index)~}}{{name}}{{/with}}
-          ">
-            {{.}}
-          </td>
-        {{/each}}
-      </tr>
-    {{/each}}
-
-  </tbody>
-
-  {{#if [0].footer}}
-    <tfoot class="table__foot">
-      <tr class="table__row">
-        <td class="
-          table__cell
-          table__footer
-        "
-        colspan="{{ columnCount }}"
-        scope="colgroup"
-        >
-          {{[0].footer}}
-        </td>
-      </tr>
-    </tfoot>
-  {{/if}}
+{{#if [0].footer}}
+  {{> footer}}
+{{/if}}
 
 </table>
 
