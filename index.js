@@ -13,11 +13,17 @@ const csso         = require('@node-minify/csso');
 // Paths
 //
 
+const distDir = path.resolve('./dist/');
+
 const paths = {
   config: path.resolve('./', 'config.yaml'),
   data: path.resolve('./data/', 'sample.yaml'),
-  styles: path.resolve('./styles/', 'styles.scss'),
   dist: path.resolve('./dist/', 'sample.html')
+}
+
+const styles = {
+  in: './styles/styles.scss',
+  out: distDir + '/styles.css'
 }
 
 const templates = {
@@ -59,55 +65,45 @@ Handlebars.registerHelper('columnCount', function() {
   return new Handlebars.SafeString(columnCount);
 });
 
-
-
 //
 // Styles
 //
 
-Handlebars.registerHelper('cssInclude', function(cssInclude){
+// For now we're just dumping the styles in as-is.
+var css = fs.readFileSync(styles.in, {encoding: 'utf-8'});
 
-  // For now we're just dumping the styles in as-is.
-  var styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
+if (env == 'prod') {
+  var stylesOutput = minify({
+    compressor: csso,
+    content: css,
+    callback: (error, minCSS) => {
+      fs.writeFileSync(styles.out, minCSS);
+    }
+  });
+} else {
+  var stylesOutput = fs.writeFileSync(styles.out, css);
+}
+
+Handlebars.registerHelper('cssInclude', function(cssInclude){
   const type = config.css;
   var content = '';
 
   switch(type) {
   case 'file':
-    if (env == 'prod') {
-      minify({
-        compressor: csso,
-        content: styles,
-        callback: (error, css) => {
-          fs.writeFileSync('dist/styles.css', css);
-        }
-      });
-    } else {
-      fs.writeFileSync('dist/styles.css', styles);
-    }
-    console.log(`CSS file written to dist/styles.css`);
+    stylesOutput;
+    console.log(`CSS file written to ${styles.out}`);
     return content;
     break;
 
   case 'ref':
-    if (env == 'prod') {
-      minify({
-        compressor: csso,
-        content: styles,
-        callback: (error, css) => {
-          fs.writeFileSync('dist/styles.css', css);
-        }
-      });
-    } else {
-      fs.writeFileSync('dist/styles.css', styles);
-    }
+    stylesOutput;
     content = '<style>\n@import url(styles.css);\n</style>';
-    console.log(`CSS file written to dist/styles.css and included with @import`);
+    console.log(`CSS file written to ${styles.out} and included with @import`);
     return content;
     break;
 
   case 'include':
-    content = '<style>\n' + styles + '</style>';
+    content = '<style>\n' + css + '</style>';
     console.log(`CSS included in HTML`);
     return content;
     break;
