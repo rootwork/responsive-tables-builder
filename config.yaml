@@ -1,6 +1,13 @@
 # ENVIRONMENT
 # Options are 'dev' and 'prod'
-# dev: Renders pretty, unminified HTML and CSS.
+# dev:  Renders pretty, unminified HTML and CSS.
 # prod: Renders compact, minified HTML and CSS.
 env: dev
 
+# CSS
+# include: Places CSS styles in between `<style>` tags in the HTML output
+#          file(s).
+# file:    Saves CSS styles to a `styles.css` file in the `dist` directory.
+# ref:     Same as 'file', but also places a CSS import tag at the top of the
+#          HTML output file(s) loading the styles.
+css: file

@@ -3,9 +3,6 @@
 const fs           = require('fs');
 const yaml         = require('js-yaml');
 const Handlebars   = require("handlebars");
-// const helpers    = require('handlebars-helpers')({
-//   handlebars: Handlebars
-// });
 const path         = require('path');
 const minify       = require('@node-minify/core');
 const htmlMinifier = require('@node-minify/html-minifier');
@@ -17,7 +14,7 @@ const htmlMinifier = require('@node-minify/html-minifier');
 const paths = {
   config: path.resolve('./', 'config.yaml'),
   data: path.resolve('./data/', 'sample.yaml'),
-  styles: path.resolve('./styles/', '*.scss'),
+  styles: path.resolve('./styles/', 'styles.scss'),
   dist: path.resolve('./dist/', 'sample.html')
 }
 
@@ -52,7 +49,13 @@ const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 //
 
 // For now we do this quick and dirty, just dumping the Sass file in as CSS.
-Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.scss', 'utf8'));
+Handlebars.registerPartial('css', fs.readFileSync(paths.styles, 'utf8'));
+
+if (config.css=='file') {
+  const styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
+  fs.writeFileSync('dist/styles.css', styles);
+  console.log(`CSS file written to dist/styles.css`);
+}
 
 //
 // Handlebar helpers
@@ -61,6 +64,11 @@ Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.sc
 Handlebars.registerHelper('columnCount', function() {
   var columnCount = Object.keys(dataJSON[0]['columns']).length;
   return new Handlebars.SafeString(columnCount);
+});
+
+Handlebars.registerHelper('cssStatus', function() {
+  var cssStatus = config.css;
+  return new Handlebars.SafeString(cssStatus);
 });
 
 //
@@ -124,12 +132,12 @@ switch(config.env) {
         fs.writeFileSync(paths.dist, content);
       }
     });
-    console.log(`File written to ${paths.dist}`);
+    console.log(`HTML file written to ${paths.dist}`);
     break;
 
   case 'dev':
     fs.writeFileSync(paths.dist, html);
-    console.log(`File written to ${paths.dist}`);
+    console.log(`HTML file written to ${paths.dist}`);
     break;
 
   default:
