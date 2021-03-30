@@ -143,6 +143,8 @@ switch(config.env) {
       options: {
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,
+        customAttrCollapse: /data-title/,
+        removeAttributeQuotes: false,
         continueOnParseError: true,
         removeComments: true,
         minifyCSS: true
