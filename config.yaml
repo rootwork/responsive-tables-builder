@@ -1,8 +1,9 @@
 # ENVIRONMENT
-# Options are 'dev' and 'prod'
-# dev:  Renders pretty, unminified HTML and CSS.
-# prod: Renders compact, minified HTML and CSS.
-env: dev
+#
+# Running `npm start` assumes the default development environment. HTML and CSS
+# are prettified for easy reading.
+#
+# Run `npm start prod` instead to render compact, minified HTML and CSS.
 
 # CSS
 # include: Places CSS styles in between `<style>` tags in the HTML output

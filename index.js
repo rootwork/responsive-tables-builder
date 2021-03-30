@@ -3,6 +3,7 @@
 const fs           = require('fs');
 const yaml         = require('js-yaml');
 const Handlebars   = require("handlebars");
+const argv         = require('minimist')(process.argv.slice(2));
 const path         = require('path');
 const minify       = require('@node-minify/core');
 const htmlMinifier = require('@node-minify/html-minifier');
@@ -33,6 +34,10 @@ const templates = {
 // Read configuration
 //
 
+// Get environment option from the command line, e.g. `npm start prod`
+const env = argv._[0];
+
+// Load YAML config file.
 const configJSON = yaml.loadAll(fs.readFileSync(paths.config, {encoding: 'utf-8'}));
 const config = configJSON[0];
 
@@ -135,7 +140,7 @@ const format = Handlebars.compile(template, {
 });
 const html = format(dataJSON);
 
-switch(config.env) {
+switch(env) {
   case 'prod':
     minify({
       compressor: htmlMinifier,
@@ -156,11 +161,7 @@ switch(config.env) {
     console.log(`HTML file written to ${paths.dist}`);
     break;
 
-  case 'dev':
+  default:
     fs.writeFileSync(paths.dist, html);
     console.log(`HTML file written to ${paths.dist}`);
-    break;
-
-  default:
-    console.log(`Error: Environment must be set to "dev" or "prod" in ${paths.config}`);
 }

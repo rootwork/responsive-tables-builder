@@ -82,6 +82,9 @@ converters](https://www.json2yaml.com/) you can use.
 6. For further styling customization, edit the Sass files in the
 [`styles`](styles) directory.
 
+7. Run `npm start prod` to generate compact and minified HTML and CSS files for
+production.
+
 ## Directory structure
 
 [`config.yaml`](config.yaml), at the root directory, allows you to set
