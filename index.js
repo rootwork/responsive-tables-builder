@@ -50,11 +50,9 @@ const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 
 // For now we do this quick and dirty, just dumping the Sass file in as CSS.
 Handlebars.registerPartial('css', fs.readFileSync(paths.styles, 'utf8'));
-
 if (config.css=='file') {
   const styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
   fs.writeFileSync('dist/styles.css', styles);
-  console.log(`CSS file written to dist/styles.css`);
 }
 
 //
@@ -66,9 +64,30 @@ Handlebars.registerHelper('columnCount', function() {
   return new Handlebars.SafeString(columnCount);
 });
 
-Handlebars.registerHelper('cssStatus', function() {
-  var cssStatus = config.css;
-  return new Handlebars.SafeString(cssStatus);
+Handlebars.registerHelper('cssInclude', function(cssInclude){
+  var css = config.css;
+
+  switch(css) {
+  case 'file':
+    // Actual writing of this file is handled in the "Styles" section.
+    console.log(`CSS file written to dist/styles.css`);
+    break;
+
+  case 'ref':
+    css = '<style>@import url(styles.css);</style>';
+    console.log(`CSS file written to dist/styles.css and included with @import`);
+    return css;
+    break;
+
+  case 'include':
+    css = '<style>{{> css}}</style>';
+    console.log(`CSS included in HTML`);
+    return css;
+    break;
+
+  default:
+    console.log('Error: CSS option must be set to "include", "file" or "ref" in config.yaml');
+  }
 });
 
 //
