@@ -9,5 +9,5 @@ env: dev
 #          file(s).
 # file:    Saves CSS styles to a `styles.css` file in the `dist` directory.
 # ref:     Same as 'file', but also places a CSS import tag at the top of the
-#          HTML output file(s) loading the styles.
+#          HTML output file(s) to load the styles.
 css: file

@@ -45,17 +45,6 @@ const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
 // fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
-// Styles
-//
-
-// For now we do this quick and dirty, just dumping the Sass file in as CSS.
-Handlebars.registerPartial('css', fs.readFileSync(paths.styles, 'utf8'));
-if (config.css=='file') {
-  const styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
-  fs.writeFileSync('dist/styles.css', styles);
-}
-
-//
 // Handlebar helpers
 //
 
@@ -64,25 +53,36 @@ Handlebars.registerHelper('columnCount', function() {
   return new Handlebars.SafeString(columnCount);
 });
 
-Handlebars.registerHelper('cssInclude', function(cssInclude){
-  var css = config.css;
 
-  switch(css) {
+
+//
+// Styles
+//
+
+Handlebars.registerHelper('cssInclude', function(cssInclude){
+  // For now we're just dumping the styles in as-is.
+  const styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
+  const type = config.css;
+  var content = '';
+
+  switch(type) {
   case 'file':
-    // Actual writing of this file is handled in the "Styles" section.
+    fs.writeFileSync('dist/styles.css', styles);
     console.log(`CSS file written to dist/styles.css`);
+    return content;
     break;
 
   case 'ref':
-    css = '<style>@import url(styles.css);</style>';
+    fs.writeFileSync('dist/styles.css', styles);
+    content = '<style>\n@import url(styles.css);\n</style>';
     console.log(`CSS file written to dist/styles.css and included with @import`);
-    return css;
+    return content;
     break;
 
   case 'include':
-    css = '<style>{{> css}}</style>';
+    content = '<style>\n' + styles + '</style>';
     console.log(`CSS included in HTML`);
-    return css;
+    return content;
     break;
 
   default:
