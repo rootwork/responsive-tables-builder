@@ -7,6 +7,7 @@ const argv         = require('minimist')(process.argv.slice(2));
 const path         = require('path');
 const minify       = require('@node-minify/core');
 const htmlMinifier = require('@node-minify/html-minifier');
+const csso         = require('@node-minify/csso');
 
 //
 // Paths
@@ -65,20 +66,41 @@ Handlebars.registerHelper('columnCount', function() {
 //
 
 Handlebars.registerHelper('cssInclude', function(cssInclude){
+
   // For now we're just dumping the styles in as-is.
-  const styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
+  var styles = fs.readFileSync(paths.styles, {encoding: 'utf-8'});
   const type = config.css;
   var content = '';
 
   switch(type) {
   case 'file':
-    fs.writeFileSync('dist/styles.css', styles);
+    if (env == 'prod') {
+      minify({
+        compressor: csso,
+        content: styles,
+        callback: (error, css) => {
+          fs.writeFileSync('dist/styles.css', css);
+        }
+      });
+    } else {
+      fs.writeFileSync('dist/styles.css', styles);
+    }
     console.log(`CSS file written to dist/styles.css`);
     return content;
     break;
 
   case 'ref':
-    fs.writeFileSync('dist/styles.css', styles);
+    if (env == 'prod') {
+      minify({
+        compressor: csso,
+        content: styles,
+        callback: (error, css) => {
+          fs.writeFileSync('dist/styles.css', css);
+        }
+      });
+    } else {
+      fs.writeFileSync('dist/styles.css', styles);
+    }
     content = '<style>\n@import url(styles.css);\n</style>';
     console.log(`CSS file written to dist/styles.css and included with @import`);
     return content;
@@ -161,6 +183,7 @@ switch(env) {
     console.log(`HTML file written to ${paths.dist}`);
     break;
 
+  // Default: Development mode. Don't minify anything.
   default:
     fs.writeFileSync(paths.dist, html);
     console.log(`HTML file written to ${paths.dist}`);
