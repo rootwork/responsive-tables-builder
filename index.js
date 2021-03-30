@@ -86,7 +86,7 @@ Handlebars.registerHelper('cssInclude', function(cssInclude){
     break;
 
   default:
-    console.log('Error: CSS option must be set to "include", "file" or "ref" in config.yaml');
+    console.log(`Error: CSS option must be set to "include", "file" or "ref" in ${paths.config}`);
   }
 });
 
@@ -160,5 +160,5 @@ switch(config.env) {
     break;
 
   default:
-    console.log('Error: Environment must be set to "dev" or "prod" in config.yaml');
+    console.log(`Error: Environment must be set to "dev" or "prod" in ${paths.config}`);
 }
