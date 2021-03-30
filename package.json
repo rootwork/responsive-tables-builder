@@ -31,6 +31,8 @@
     "url": "https://github.com/sponsors/rootwork"
   },
   "dependencies": {
+    "@node-minify/core": "^6.2.0",
+    "@node-minify/html-minifier": "^6.2.0",
     "handlebars": "^4.7.7",
     "js-yaml": "^4.0.0"
   }

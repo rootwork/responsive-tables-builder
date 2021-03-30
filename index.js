@@ -1,12 +1,14 @@
 'use strict';
 
-const fs         = require('fs');
-const yaml       = require('js-yaml');
-const Handlebars = require("handlebars");
+const fs           = require('fs');
+const yaml         = require('js-yaml');
+const Handlebars   = require("handlebars");
 // const helpers    = require('handlebars-helpers')({
 //   handlebars: Handlebars
 // });
-const path       = require('path');
+const path         = require('path');
+const minify       = require('@node-minify/core');
+const htmlMinifier = require('@node-minify/html-minifier');
 
 //
 // Paths
@@ -35,9 +37,15 @@ const templates = {
 //
 
 const configJSON = yaml.loadAll(fs.readFileSync(paths.config, {encoding: 'utf-8'}));
-// Uncomment to write intermediate JSON files to disk.
-// fs.writeFileSync('./config.json', JSON.stringify(configJSON, null, 2));
 const config = configJSON[0];
+
+//
+// Read data
+//
+
+const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
+// Uncomment to write intermediate JSON files to disk.
+// fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
 // Styles
@@ -45,14 +53,6 @@ const config = configJSON[0];
 
 // For now we do this quick and dirty, just dumping the Sass file in as CSS.
 Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.scss', 'utf8'));
-
-//
-// Convert YAML to JSON
-//
-
-const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
-// Uncomment to write intermediate JSON files to disk.
-// fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
 // Handlebar helpers
@@ -106,6 +106,32 @@ Handlebars.logger.level = 3;
 const format = Handlebars.compile(template, {
   strict: true
 });
-const result = format(dataJSON);
-fs.writeFileSync(paths.dist, result);
-console.log(`File written to ${paths.dist}`);
+const html = format(dataJSON);
+
+switch(config.env) {
+  case 'prod':
+    minify({
+      compressor: htmlMinifier,
+      content: html,
+      options: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        continueOnParseError: true,
+        removeComments: true,
+        minifyCSS: true
+      },
+      callback: (error, content) => {
+        fs.writeFileSync(paths.dist, content);
+      }
+    });
+    console.log(`File written to ${paths.dist}`);
+    break;
+
+  case 'dev':
+    fs.writeFileSync(paths.dist, html);
+    console.log(`File written to ${paths.dist}`);
+    break;
+
+  default:
+    console.log('Error: Environment must be set to "dev" or "prod" in config.yaml');
+}
