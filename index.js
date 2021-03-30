@@ -13,6 +13,7 @@ const path       = require('path');
 //
 
 const paths = {
+  config: path.resolve('./', 'config.yaml'),
   data: path.resolve('./data/', 'sample.yaml'),
   styles: path.resolve('./styles/', '*.scss'),
   dist: path.resolve('./dist/', 'sample.html')
@@ -30,6 +31,15 @@ const templates = {
 }
 
 //
+// Read configuration
+//
+
+const configJSON = yaml.loadAll(fs.readFileSync(paths.config, {encoding: 'utf-8'}));
+// Uncomment to write intermediate JSON files to disk.
+// fs.writeFileSync('./config.json', JSON.stringify(configJSON, null, 2));
+const config = configJSON[0];
+
+//
 // Styles
 //
 
@@ -41,7 +51,7 @@ Handlebars.registerPartial('css', fs.readFileSync(__dirname + '/styles/styles.sc
 //
 
 const dataJSON = yaml.loadAll(fs.readFileSync(paths.data, {encoding: 'utf-8'}));
-// Uncomment to write intermediate JSON file to disk.
+// Uncomment to write intermediate JSON files to disk.
 // fs.writeFileSync('./data/sample.json', JSON.stringify(dataJSON, null, 2));
 
 //
