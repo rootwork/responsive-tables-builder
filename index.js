@@ -16,7 +16,6 @@ const csso         = require('@node-minify/csso');
 const distDir = path.resolve('./dist/');
 
 const paths = {
-  config: path.resolve('./', 'config.yaml'),
   data: path.resolve('./data/', 'sample.yaml'),
   dist: path.resolve('./dist/', 'sample.html')
 }
@@ -45,7 +44,7 @@ const templates = {
 const env = argv._[0];
 
 // Load YAML config file.
-const configJSON = yaml.loadAll(fs.readFileSync(paths.config, {encoding: 'utf-8'}));
+const configJSON = yaml.loadAll(fs.readFileSync('./config.yaml', {encoding: 'utf-8'}));
 const config = configJSON[0];
 
 //
